@@ -1,15 +1,14 @@
 <template>
-    <LandPage/>
+    <Register/>
 </template>
 
 <script>
 // @ is an alias to /src
-import LandPage from '@/components/LandPage.vue'
+import Register from '@/components/Register.vue'
 
 export default {
-  name: 'Home',
   components: {
-    LandPage
+    Register
   }
 }
 </script>
