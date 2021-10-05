@@ -23,8 +23,7 @@
                     {{ spice?.description }}
                 </div>
                 <div class="post__body-image">
-                    <img src="../assets/img/ginger.jpg"/>
-                    <img src="../assets/img/salam.jpg"/>
+                    <img v-for="photo in spice.photo" :key="photo.id" :src="photo.photo_url"/>
                 </div>
             </div>
             <div class="post__comment">
@@ -36,7 +35,7 @@
                     </div>
                 </form>
                 <div class="comment" v-if="comments != null">
-                    <div class="row" v-for="comment in comments">
+                    <div class="row" v-for="comment in comments" :key="comment.id">
                         <div class="comment-photo">
                             <img :src="comment.user.avatar_url"/>
                         </div>
@@ -83,8 +82,13 @@ export default {
             if(this.form_comment === '') return
             HttpClient
                 .post('spice/'+this.$route.params.spice+'/comment', {comment: this.form_comment})
-                .then((res) => {
-                    this.comments.push(this.form_comment)
+                .then(async (res) => {
+                    this.comments.push({comment: this.form_comment, user: res.data.user});
+                    this.form_comment = '';
+                    await this.$nextTick()
+                })
+                .catch((err) => {
+                    window.alert(err);
                 })
         }
     }

@@ -14,6 +14,14 @@ const routes = [
     path: '/register',
     name: 'register',
     component: Register,
+    beforeEnter: (to, from, next) => {
+      if(localStorage.getItem('visitor-id') == null || localStorage.getItem('visitor-id' == "")) {
+        next()
+      } 
+      else{
+        router.push('map')
+      }
+    }
   },
   {
     path: '/map',

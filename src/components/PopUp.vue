@@ -4,7 +4,7 @@
     :style="transformElement"
   >
     <div class="popup__header">
-        <img src="../assets/img/ginger.jpg" alt="" class="icon">
+        <img :src="spice.photo[0].photo_url" alt="" class="icon">
         <div class="popup__header--title">{{ spice.name }}</div>
         <div class="popup__header--subtitle">{{ province.name }}</div>
         <router-link :to="path"><div class="popup__header--link">Show More</div></router-link>
