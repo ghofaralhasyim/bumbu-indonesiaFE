@@ -21,7 +21,7 @@ export default {
   name: "LandPage",
   data() {
     return{
-       nextRoute: '/register',
+       nextRoute: '/map',
     }
   },
   mounted(){
@@ -29,6 +29,7 @@ export default {
     HttpClient
       .get('landing')
       .catch((err) => {
+        console.log(err);
         if(err.response.status == 400 && err.response.data.status == 1) {
           this.nextRoute = "/register"
         }

@@ -2,15 +2,9 @@
         <section class="maps container relative" id="maps">
             <div class="maps__container">
                 <div class="maps__icon-section">
-                  <div class="box-icon active">
-                    <img src="../assets/img/ginger.jpg" alt="" class="icon" @click="selectSpice(0)">
+                  <div v-for="(spice, index) in spices" :key="spice.id" class="box-icon">
+                    <img :src="spice.photo[0].photo_url" alt="" class="icon" @click="selectSpice(index)">
                   </div> 
-                  <div class="box-icon ">
-                    <img src="../assets/img/salam.jpg" alt="" class="icon"  @click="selectSpice(1)">
-                  </div>  
-                  <div class="box-icon ">
-                    <img src="../assets/img/clove.jpg" alt="" class="icon">
-                  </div>  
                 </div>
                 <div v-if="spice != null" class="maps__title-section">
                     <div class="maps__title-section--name">
